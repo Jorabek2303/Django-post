@@ -1,0 +1,59 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success" role="alert">
+        {{message}}
+      </div>
+    {% endfor %}
+    {% endif %}
+
+      {% if yaxshi %}
+      <div class="container mt-5">
+        <div class="w-100 border d-flex align-items-center justify-content-between" style="height: 100px;">
+          <h1 class="text-danger">Yaxshi yangilik</h1>
+          <span class="fs-1 text-danger">yangilik ( {{yaxshi_count}} ) ta</span>
+        </div>
+        <div class="row mt-4">
+            {% for y in yaxshi %}
+              <div class="col-4">
+                <a href="{% url 'comment' y.id %}">
+                  <div class="card">
+                    <img src="{{ y.image.url }}" alt="{{y.title}}">
+                    <h1 class="text-danger">{{y.title}}</h1>
+                    <p>{{y.information}}</p>
+                    <p>{{y.created}} <i class="fa-solid fa-eye"></i>  <i class="fa-solid fa-comment"></i> </p>
+                  </div>
+                </a>
+              </div>
+            {% endfor %}
+          
+        </div>
+      </div>
+      {% endif %}
+
+      {% if yomon %}
+      <div class="container mt-5">
+        <div class="w-100 border d-flex align-items-center justify-content-between" style="height: 100px;">
+          <h1 class="text-danger">Yomon yangilik</h1>
+          <span class="fs-1 text-danger">yangilik ( {{yomon_count}} ) ta</span>
+        </div>
+        <div class="row mt-4">
+            {% for n in yomon %}
+              <div class="col-4">
+                <a href="{% url 'comment' n.id %}">
+                  <div class="card">
+                    <img src="{{ n.image.url }}" alt="{{n.title}}">
+                    <h1 class="text-danger">{{n.title}}</h1>
+                    <p>{{n.information}}</p>
+                    <p>{{n.created}} <i class="fa-solid fa-eye"></i>  <i class="fa-solid fa-comment"></i>  </p>
+                  </div>
+                </a>
+              </div>
+            {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+{% endblock %}

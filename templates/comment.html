@@ -1,0 +1,36 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Comments page</h1>
+        <div class="row">
+            <div class="col-6">
+                <div class="card">
+                    <img src="{{ posts.image.url }}" alt="{{posts.title}}">
+                      <h1 class="text-danger">{{posts.title}}</h1>
+                      <p>{{posts.information}}</p>
+                      <p>{{posts.created}} <i class="fa-solid fa-eye"></i>  <i class="fa-solid fa-comment"></i> {{count}} ta</p>
+                </div>
+                <form action="{% url 'comment' posts.id %}" method='POST' class="mt-5 form" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{form}}
+                    <button type="submit" class="btn btn-primary">send commment</button>
+                </form>
+            </div>
+            <div class="item6">
+                {% for pos in forms %}
+                    <div class="item8">
+                        <div class="user d-flex">
+                            <img style="width: 30px;height: 30px;border-radius:50%;"  src="{{ pos.user.user_image.url }}" alt="">
+                            <p>{{pos.user.name}}</p>
+                            <p>{{pos.post_comment}}</p>
+                        </div>
+                        <div class="item8">
+                            <a href="{% url 'edit_comment' pos.id %}"><i class="fa-solid fa-pen"></i></a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,186 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* body{
+    background-color: grey;
+} */
+
+.navigation{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    background-color: aqua;
+    padding: 0 12px;
+}
+
+.logo{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.menu{
+    display: flex;
+    column-gap: 32px;
+    height: 100%;
+    align-items: center !important;
+    margin-bottom: 0;
+}
+
+.menu li{
+    list-style: none;
+}
+
+.menu li a{
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+}
+
+.profil_image{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+
+.item1{
+    background-color: white;
+    margin-top: 30px;
+    display: inline-block;
+    width: 50%;
+    margin-left: 25%;
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.item2{
+    background-color: white;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 1px solid grey;
+}
+
+.item2 > img{
+    padding-right: 20px;
+    width: 60%;
+    height: auto;
+}
+
+
+.item3{
+    margin-top: 30px;
+    width: 50%;
+    background-color: white;
+    border-radius: 5px;
+    margin-left: 25%;
+    padding-left: 40px;
+    padding-top: 10px;
+    border: 1px solid grey;
+}
+
+label{
+    margin-top: 20px;
+    align-items: center;
+}
+
+textarea{
+    margin-top: 20px;
+    height: 100px;
+}
+
+.item4{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+button{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.alert{
+    width: 40%;
+    text-align: center;
+    margin-left: 30%;
+}
+
+
+p{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+h1{
+    padding-left: 20px;
+}
+
+span{
+    padding-right: 20px;
+}
+
+i{
+    margin-left: 20px;
+}
+
+.item5{
+    display:flex;
+    margin-left: 40px;
+    margin-right: 40px;
+    justify-content: space-between;
+}
+
+a{
+    text-decoration: none;
+    color: red;
+}
+
+.form div{
+    display: flex;
+    flex-direction: column;
+}
+
+.form div input{
+    width: 80%;
+    height: 45px;
+    margin-bottom: 10px;
+}
+
+
+.item6{
+    width: 40%;
+    margin-left: 20px;
+    border: 1px solid gray;
+}
+
+.item7 input{
+    width: 20%;
+    height: 45px;
+    margin-top: 30px;
+    margin-left: 35%;
+    padding-left: 20px;
+}
+
+
+.item8{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item8 .btn-primary{
+    margin-right: 20px;
+}
