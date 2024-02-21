@@ -9,7 +9,7 @@
                     <img src="{{ posts.image.url }}" alt="{{posts.title}}">
                       <h1 class="text-danger">{{posts.title}}</h1>
                       <p>{{posts.information}}</p>
-                      <p>{{posts.created}} <i class="fa-solid fa-eye"></i>  <i class="fa-solid fa-comment"></i> {{count}} ta</p>
+                      <p>{{posts.created}} <i class="fa-solid fa-eye"></i> {{count_hit}} ta <i class="fa-solid fa-comment"></i> {{count}} ta</p>
                 </div>
                 <form action="{% url 'comment' posts.id %}" method='POST' class="mt-5 form" enctype="multipart/form-data">
                     {% csrf_token %}

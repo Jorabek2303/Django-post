@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from hitcount.utils import get_hitcount_model
+from hitcount.views import HitCountMixin
 from .forms import *
 from .models import *
 
@@ -161,6 +163,12 @@ def DeletepostView(request,pk):
 @login_required(login_url="/register/")
 def CommentView(request,pk):
     post_s = CreatePostModel.objects.get(id=pk)
+    hit_count = get_hitcount_model().objects.get_for_object(post_s)
+    count_hits = hit_count.hits
+    hit_count_response = HitCountMixin.hit_count(request, hit_count)
+    if hit_count_response.hit_counted:
+        count_hits =+ 1
+        
     if request.POST:
         form = CommentForm(request.POST)
         if form.is_valid():
@@ -177,6 +185,7 @@ def CommentView(request,pk):
     forms_count = forms.count()
     
     ctx = {
+        'count_hit':count_hits,
         'forms':forms,
         'form':form,
         'posts':post_s,
