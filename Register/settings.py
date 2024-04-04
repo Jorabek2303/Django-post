@@ -18,7 +18,7 @@ environs.Env.read_env()
 
 SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -70,12 +70,7 @@ WSGI_APPLICATION = 'Register.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-if 'DATABASE_URL' in env('SECRET_KEY'):
-    DATABASES = {
-        'default': dj_database_url.parse(env('DATABASE_URL'))
-    }
-else:
-    DATABASES = {
+DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),

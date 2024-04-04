@@ -1,36 +1,44 @@
 {% extends 'navbar.html' %}
 
 {% block content %}
-<div class="container">
-    <h1>Comments page</h1>
+    <div class="container">
+        <h1>Comment page</h1>
         <div class="row">
             <div class="col-6">
                 <div class="card">
                     <img src="{{ posts.image.url }}" alt="{{posts.title}}">
-                      <h1 class="text-danger">{{posts.title}}</h1>
-                      <p>{{posts.information}}</p>
-                      <p>{{posts.created}} <i class="fa-solid fa-eye"></i> {{count_hit}} ta <i class="fa-solid fa-comment"></i> {{count}} ta</p>
+                    <h1>{{posts.title}}</h1>
+                    <p>{{posts.text}}</p>
+                    <p>{{posts.created}}<i class="fa-solid fa-eye"> {{ count_hit }} ta</i>  <i class="fa-solid fa-comment"> {{ count }} ta</i></p>
                 </div>
-                <form action="{% url 'comment' posts.id %}" method='POST' class="mt-5 form" enctype="multipart/form-data">
+                <form action="{% url 'comment' posts.id %}" method="POST" class="mt-5 form">
                     {% csrf_token %}
                     {{form}}
-                    <button type="submit" class="btn btn-primary">send commment</button>
+                    <button class="btn btn-primary">save commit</button>
                 </form>
             </div>
-            <div class="item6">
-                {% for pos in forms %}
-                    <div class="item8">
-                        <div class="user d-flex">
-                            <img style="width: 30px;height: 30px;border-radius:50%;"  src="{{ pos.user.user_image.url }}" alt="">
-                            <p>{{pos.user.name}}</p>
-                            <p>{{pos.post_comment}}</p>
-                        </div>
-                        <div class="item8">
-                            <a href="{% url 'edit_comment' pos.id %}"><i class="fa-solid fa-pen"></i></a>
-                        </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="scroll_box">
+                    {% for pos in forms %}
+                        <div class="col-12">
+                                <div class="comment border mb-2 w-100">
+                                    <div class="comment_box">
+                                        <div class="img_name">
+                                            <img style="width: 50px; height: 50px; border-radius: 50%;" src="{{pos.user.user_image.url}}" alt="">
+                                            <p class="mb-0">{{pos.user.name}}</p>
+                                        </div>
+                                        <a href="{% url 'edit_comment' pos.id %}"><i class="fa-solid fa-pen"></i></a>
+                                    </div>
+                                    <p clas>{{pos}}</p>
+                                </div>
+                         </div>
+                    {% endfor %}
                     </div>
-                {% endfor %}
+                </div>
             </div>
         </div>
     </div>
-{% endblock %}
+
+
+    {% endblock %}
